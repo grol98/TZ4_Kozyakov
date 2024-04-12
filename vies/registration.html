@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Регистрация</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1>Введите данные</h1>
+    <form action="/registration" method="post">
+      <label>Login</label><br />
+      <input type="text" name="username" required /><br /><br />
+      <label>Password</label><br />
+      <input
+        class="password1"
+        type="password"
+        name="password1"
+        onkeyup="KeyUp()"
+        required
+      /><br /><br />
+      <label>Password2</label><br />
+      <input
+        class="password2"
+        type="password"
+        name="password2"
+        onkeyup="KeyUp()"
+        required
+      /><br /><br />
+      <button class="sub" type="submit">Регистрация</button>
+    </form>
+    <br />
+    <div><h2 class="error"></h2></div>
+    <br />
+    <a href="login">Назад</a>
+
+    <script>
+      function KeyUp() {
+        // Выполняем скрипт при изменении содержимого 2-го поля
+        var value_input1 =
+          document.getElementsByClassName("password1")[0].value; // Получаем содержимое 1-го поля
+        var value_input2 =
+          document.getElementsByClassName("password2")[0].value; // Получаем содержимое 2-го поля
+        if (value_input1 != value_input2) {
+          // Условие, если поля не совпадают
+
+          document.getElementsByClassName("error")[0].innerHTML =
+            "Пароли не совпадают!"; // Выводим сообщение
+          document
+            .getElementsByClassName("sub")[0]
+            .setAttribute("disabled", "disabled"); // Запрещаем отправку формы
+        } else {
+          // Условие, если поля совпадают
+          document.getElementsByClassName("sub")[0].removeAttribute("disabled"); // Разрешаем отправку формы
+          document.getElementsByClassName("error")[0].innerHTML = ""; // Скрываем сообщение
+        }
+      }
+    </script>
+  </body>
+</html>
